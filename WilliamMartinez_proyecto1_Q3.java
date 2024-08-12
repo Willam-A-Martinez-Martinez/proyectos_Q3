@@ -53,6 +53,7 @@ public class WilliamMartinez_proyecto1_Q3 {
             } 
             
             else if (eleccion == 2 && cajaOpen) {
+                
                 if(contadorAzucar == 0 && contadorAvena == 0 && contadorTrigo == 0 && contadorMaiz == 0){
                     System.out.println("No hay producto para vender, reabastecer producto");
                 }
@@ -67,10 +68,12 @@ public class WilliamMartinez_proyecto1_Q3 {
                     System.out.println("Ingrese el tipo de cliente: ");
                     tipoCliente = lea.next();
                     
-                    while(tipoCliente.equalsIgnoreCase("a") || tipoCliente.equalsIgnoreCase("b") || tipoCliente.equalsIgnoreCase("c")){
+                    while(!tipoCliente.equalsIgnoreCase("a") && !tipoCliente.equalsIgnoreCase("b") && !tipoCliente.equalsIgnoreCase("c")){
                         System.out.println("Error. solo se seleccionan opciones de A, B, C\nIngrese el tipo de cliente: ");
                         tipoCliente = lea.next();
+                        System.out.println(tipoCliente);
                     }
+                    
                     /*
                     ___________________________________________________________________
                    |____CODIGO____|__________PRODUCTO__________|________PRECIO________|
@@ -123,11 +126,11 @@ public class WilliamMartinez_proyecto1_Q3 {
                                     codigoProducto=lea.nextInt();
                                 }
                             }
-                        if(codigoProducto==1){
-                            System.out.println("____________________________________________________________________________________\n" +
-                                "|____CODIGO____|__________PRODUCTO__________|________PRECIO________|___KILOGRAMOS___|\n" +
-                                "|_______1______|___________Azcuar____________|_______LPS. 30_______|_____"+contadorAzucar+"________|");
-                        }
+                            if(codigoProducto==1){
+                                System.out.println("____________________________________________________________________________________\n" +
+                                    "|____CODIGO____|__________PRODUCTO__________|________PRECIO________|___KILOGRAMOS___|\n" +
+                                    "|_______1______|___________Azcuar____________|_______LPS. 30_______|_____"+contadorAzucar+"________|");
+                            }
                         
                         else if(codigoProducto==2){
                             System.out.println("____________________________________________________________________________________\n" +
@@ -247,9 +250,9 @@ public class WilliamMartinez_proyecto1_Q3 {
                                     +"\n|__Producto comprado__|__Costo unitario por kilogramo__|__Kilogramos comprados__|"
                                     + "\n"+listProducts
                                     + "\nSubtotal: Lps. "+subtotal
-                                    + "\nImpuesto 7% ISV: Lps. "+impuestos
-                                    + "\nDescuento "+descuentoStr+": Lps. "+descuentoV
-                                    + "\nTotal comprado: Lps. "+totalV);
+                                    + "\nImpuesto 7% ISV: Lps. "+String.format("%.2f", impuestos)
+                                    + "\nDescuento "+descuentoStr+": Lps. "+String.format("%.2f", descuentoV)
+                                    + "\nTotal comprado: Lps. "+String.format("%.2f", totalV));
                                 volumenVenta+=totalV;
                                 caja+=totalV;
                                 ingresoAzucar="";
@@ -630,10 +633,10 @@ public class WilliamMartinez_proyecto1_Q3 {
                                   +"|`````````Volumen de compras, ventas y margen de ganancia`````````\n"
                                   +"|Volumen de compras: Lps. "+volumenCompra+"\n"
                                   +"|Volumen de ventas: Lps. "+volumenVenta+"\n"
-                                  +"|Margen de ganancias: "+Math.round((volumenVenta-volumenCompra)/volumenVenta)*100+"%(Lps. "+Math.round(volumenVenta-volumenCompra)+")\n"
+                                  +"|Margen de ganancias: "+String.format("%.2f", (((volumenVenta-volumenCompra)/volumenVenta)*100))+"%(Lps. "+String.format("%.2f", volumenVenta-volumenCompra)+")\n"
                                   +"|``````````````````Valor Medio de Compra y Venta``````````````````\n"
-                                  +"|Valor medio de compras: Lps. "+Math.round(volumenCompra/contadorCompra)+"\n"
-                                  +"|Valor medio de ventas: Lps. "+Math.round(volumenVenta/contadorVenta)+"\n"
+                                  +"|Valor medio de compras: Lps. "+String.format("%.2f", volumenCompra/contadorCompra)+"\n"
+                                  +"|Valor medio de ventas: Lps. "+String.format("%.2f", volumenVenta/contadorVenta)+"\n"
                                   +"|```````````````````````Venta y compra mayor```````````````````````\n"
                                   +"|Venta mayor: Lps. "+mayorVenta+"\n"
                                   +"|Compra mayor: Lps. "+mayorCompra+"\n"
